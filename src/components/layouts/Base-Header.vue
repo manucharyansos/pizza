@@ -2,15 +2,18 @@
 
   <header>
     <nav class="navbar navbar-expand-lg py-5 bg-white relative flex items-center w-full justify-between border-b-white dark:bg-mBlack">
-      <div class="header_logo_content flex flex-row items-center justify-center cursor-pointer">
-        <div class="header_logo ">
-          <img src="@/assets/logo.png" alt="image" class="w-full rounded-3xl">
+      <router-link to="/home">
+        <div class="header_logo_content flex flex-row items-center justify-center cursor-pointer">
+          <div class="header_logo ">
+            <img src="@/assets/logo.png" alt="image" class="w-full rounded-3xl">
+          </div>
+          <div class="flex flex-col items-start ml-4">
+            <p class="text-silver font-semibold leading-5 font-sans text-sm">Welcome to</p>
+            <p class="text-red font-semibold leading-5 font-serif text-md">Pizza Hut Armenia Menu</p>
+          </div>
         </div>
-        <div class="flex flex-col items-start ml-4">
-          <p class="text-silver font-semibold leading-5 font-sans text-sm">Welcome to</p>
-          <p class="text-red font-semibold leading-5 font-serif text-md">Pizza Hut Armenia Menu</p>
-        </div>
-      </div>
+      </router-link>
+
         <div class="flex flex-row w-1/12 items-center bg-red text-white rounded-xl p-2 hover:bg-redS cursor-pointer stroke-white">
            <svg  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" xml:space="preserve" style="enable-background: new 0 0 22 22;"><g _ngcontent-kxi-c24=""><g _ngcontent-kxi-c24=""><path _ngcontent-kxi-c24="" d="M1.8,16h12.9c0.2,0,0.3-0.1,0.5-0.2l1.2-0.8c0.9-0.6,1.9-0.9,2.9-0.9h0.2c0.3,0,0.6-0.1,0.8-0.4l0.8-0.8
 			c0,0-1-1.2-2.3-1.1s-2.4,1-2.4,1" class="st2 stroke-white fill-red hover:bg-redS" ></path><line _ngcontent-kxi-c24="" x1="0.8" y1="13.5" x2="7.8" y2="13.5" class="st2 stroke-white fill-white hover:bg-redS"></line><path _ngcontent-kxi-c24="" d="M1.8,16c0,0-0.6-2.5,0.5-3.8C3,11.3,4.1,11,4.1,11h6.6c0,0-0.5,1.4,0,2.1c0.5,0.7,1.1,1.1,2,1.1

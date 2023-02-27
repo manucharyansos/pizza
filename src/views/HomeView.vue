@@ -43,41 +43,15 @@
       <!--  Categoties-->
 
       <div class="flex flex-col px-10 py-12 justify-between">
-        <div class="flex flex-row items-center">
-          <div class="flex flex-row justify-center items-center">
-            <div class="category_img">
-              <img src="@/assets/categories.svg" alt="">
-            </div>
-            <p class="text-51 text-xl font-semibold font-serif leading-6 dark:text-white">ԿԱՏԵԳՈՐԻԱՆԵՐ</p>
-          </div>
-          <div class="flex flex-row items-center float-right ml-auto mr-2">
-            <p class="text-red cursor-pointer text-lg font-serif font-normal mr-6">Տեսնել բոլորը</p>
-            <div>
-              <button class="rbtn border border-silver rounded-tl-lg rounded-bl-lg hover:text-red font-semibold text-silver">
-                <font-awesome-icon icon="fa-solid fa-chevron-left" />
-              </button>
-              <button @click="slid" class="rbtn border border-silver rounded-tr-lg rounded-br-lg hover:text-red font-semibold text-silver">
-                <font-awesome-icon icon="fa-solid fa-chevron-right" />
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="categories flex flex-row overflow-hidden">
-          <div :class="{ active: isActive }" class="category cursor-pointer overflow-hidden rounded-3xl m-4 relative" v-for="category of getCategories" :key="category.id">
-            <template v-if="category.imageName">
-              <img
-                  :src="require(`@/assets/${category.imageName}`)"
-                  alt="image"
-                  class="w-full h-full rounded-3xl duration-700 hover:scale-110"
-              >
-            </template>
-            <div class="category_name uppercase absolute z-10 bottom-0 flex items-center justify-center text-white font-serif text-lg font-semibold">
-              <p class="flex text-center content-center items-center justify-center m-auto">{{category.name}}</p>
-            </div>
-          </div>
-        </div>
+        <categories-paragraph/>
       </div>
-
+      <div class="py-2 px-6">
+        <base-carousel
+            :items-to-show="6"
+            :slide-data="getCategories"
+            classe="category"
+        />
+      </div>
       <!--Products-->
 
       <div class="flex flex-col px-12 py-8">
@@ -194,13 +168,23 @@ import BaseButton from "@/components/Base-Button";
 import { mapGetters, mapActions } from "vuex"
 import ProductCard from "@/components/Product-Card";
 import SearchProduct from "@/components/Search-Product";
-
+import BaseCarousel from "@/components/Base-Carousel";
+import CategoriesParagraph from "@/components/CategoriesParagraph";
 
 
 export default {
   components: {
+    CategoriesParagraph,
+    BaseCarousel,
     SearchProduct,
-    ProductCard, BaseButton, BaseInput, CheckBoxComponent, CloseComponent, BaseHeader, BaseFooter},
+    ProductCard,
+    BaseButton,
+    BaseInput,
+    CheckBoxComponent,
+    CloseComponent,
+    BaseHeader,
+    BaseFooter,
+  },
   data(){
     return {
       isBars: false,
@@ -234,18 +218,10 @@ export default {
       ],
       basketTotal: 0,
       isSearch: false,
-      searched: []
     }
   },
   computed: {
     ...mapGetters(['getCategories', 'getProducts', 'getBasket']),
-    // filteredList() {
-    //   return this.getProducts.filter((product) => {
-    //     return product.name
-    //         .toLowerCase()
-    //         .includes(this.searchable.toLowerCase())
-    //   })
-    // },
   },
   watch: {
     searchable(val){
@@ -295,9 +271,6 @@ export default {
       this.removeAllBasket()
       this.isOpenBasket = false
       this.basketTotal = this.getBasket.length
-    },
-    slid(){
-      this.isActive = true
     },
     filteredList() {
       return this.getProducts.filter((product) => {
@@ -356,32 +329,7 @@ nav a.router-link-exact-active {
   padding: 10px;
 }
 
-.category_img{
-  width: 60px;
-  height: 60px;
-  padding: 10px;
-}
 
-.categories{
-  width: 1450px;
-}
-
-.category{
-  width: 208px;
-  min-width: 208px;
-  height: 208px;
-}
-
-.rbtn{
-  width: 40px;
-  height: 40px;
-}
-
-.category_name{
-  background: rgba(0,0,0,.5);
-  width: 100%;
-  height: 60px;
-}
 
 .prod_par_image{
   width: 50px;
