@@ -35,10 +35,25 @@ export default {
 
 <style scoped>
 .input{
-  width: 100%;
-  min-width: 1050px;
+  width: 1050px;
+  /*min-width: 1050px;*/
   box-shadow: none!important;
   outline: none!important;
 
+}
+@media screen and (max-width: 1450px){
+  .input{
+    width: 900px;
+  }
+}
+@media screen and (max-width: 1350px){
+  .input{
+    width: 700px;
+  }
+}
+@media screen and (max-width: 1110px){
+  .input{
+    width: 500px;
+  }
 }
 </style>

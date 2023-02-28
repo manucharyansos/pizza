@@ -65,14 +65,27 @@ export default {
 
 <style scoped>
 .category{
-  width: 208px;
-  min-width: 208px;
-  height: 208px;
+  width: 13rem;
+  height: 13rem;
 }
 
 .category_name{
   background: rgba(0,0,0,.5);
   width: 100%;
   height: 60px;
+}
+@media screen and (max-width: 1300px){
+
+  .category{
+    width: 178px;
+    height: 178px;
+  }
+}
+@media screen and (max-width: 1150px){
+
+  .category{
+    width: 138px;
+    height: 138px;
+  }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="footer_content flex flex-row justify-between p-12">
+  <div class="footer_content flex flex-row justify-between p-12 bg-mSilver">
     <div class="flex flex-col justify-start items-start text-white ">
       <div v-for="item of data" :key="item.id" class="flex flex-row items-center cursor-pointer">
         <div class="locationImage mr-2">
@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="flex flex-row justify-end text-xl">
-      <div @click="$emit('socialIcon', item.name)" v-for="item of iconName" :key="item.id" class="socialIcons cursor-pointer text-white bg-mSilver flex justify-center items-center m-2">
+      <div @click="$emit('socialIcon', item.val)" v-for="item of iconName" :key="item.id" class="socialIcons cursor-pointer text-white flex justify-center items-center m-2">
         <font-awesome-icon :icon="item.name" />
       </div>
     </div>
@@ -42,7 +42,7 @@ export default {
 <style scoped>
   .footer_content{
     background-color: #3d3d3d;
-    height: 300px;
+    /*height: 300px;*/
 
   }
 

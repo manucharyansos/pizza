@@ -1,6 +1,5 @@
 <template>
   <div class="dark:bg-mBlack">
-    <base-header/>
     <div class="px-8 dark:bg-mBlack">
       <div class="flex flex-row py-12 px-8 mt-16">
         <div class="float-left">
@@ -31,22 +30,19 @@
         <product-card :data="getProducts"></product-card>
       </div>
     </div>
-    <base-footer/>
   </div>
 </template>
 <script>
-import BaseHeader from "@/components/layouts/Base-Header";
-import BaseFooter from "@/components/layouts/Base-Footer";
-import CategoriesCarousel from "@/components/Categories-Carousel";
+import CategoriesCarousel from "@/views/categories/carousel/indexComponent"
 import { mapGetters } from "vuex";
 import ProductCard from "@/components/Product-Card";
-import SearchProduct from "@/components/Search-Product";
+import SearchProduct from "@/views/home/search/Search-Product";
 import BaseButton from "@/components/Base-Button";
 import BaseInput from "@/components/Base-Input";
 
 export default {
   name: 'Categories-View',
-  components: {SearchProduct, ProductCard, BaseFooter, BaseHeader, CategoriesCarousel, BaseButton, BaseInput },
+  components: {SearchProduct, ProductCard,  CategoriesCarousel, BaseButton, BaseInput },
   computed: {
     ...mapGetters(['getCategories', 'getProducts'])
   },
