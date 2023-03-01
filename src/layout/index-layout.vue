@@ -1,7 +1,7 @@
 <template>
   <div class="dark:bg-mBlack">
     <div class="sticky top-0 bg-white z-20">
-      <base-header :total-basket="basketTotal" @clickBasket="openBasket" @barsClick="bars">
+      <base-header :delivery="$t('delivery')" :total-basket="basketTotal" @clickBasket="openBasket" @barsClick="bars">
         <template v-slot:language>
         <span
             class="font-semibold font-xl text-silver dark:text-white"
@@ -17,7 +17,13 @@
             @close="openLanguage"
             imgURL="close.svg"
         />
-        <check-box-component :select-language="selectLanguage" @changeLanguage="changeLanguage"/>
+        <div>
+          <check-box-component
+              v-model:modelValue="language"
+              :select-language="selectLanguage"
+              @changeLanguage="changeLanguage"
+          />
+        </div>
       </div>
     </template>
     <!--      Bars -->
@@ -101,10 +107,18 @@ import BaseFooter from "@/layout/footer/Base-Footer";
 import CloseComponent from "@/components/CloseComponent";
 import CheckBoxComponent from "@/components/CheckBox-Component";
 import {mapActions, mapGetters} from "vuex";
+import {useI18n} from "vue-i18n";
 
 export default {
   name: "index-layout",
   components: {BaseFooter, BaseHeader, CloseComponent, CheckBoxComponent},
+  setup() {
+    const {  locale } = useI18n({useScope: 'global'})
+
+    return {
+      locale
+    }
+  },
   data() {
     return {
       isBars: false,
@@ -159,6 +173,15 @@ export default {
     },
     changeLanguage(val){
       this.language = val
+      if (this.language === 'EN'){
+        this.locale = 'en'
+      }
+      if (this.language === 'RU'){
+        this.locale = 'ru'
+      }
+      if (this.language === 'HY'){
+        this.locale = 'am'
+      }
     },
 
     minusToBasket(index){

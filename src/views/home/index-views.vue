@@ -4,7 +4,7 @@
     <div class="flex flex-row px-12 mt-16 w-full ">
       <div class="float-left">
         <base-button>
-          <span>ԲՈԼՈՐ ԱՊՐԱՆՔՆԵՐԸ</span>
+          <span>{{$t('all_products')}}</span>
         </base-button>
       </div>
       <div class="flex flex-row float-right ml-auto relative input_component">
@@ -26,7 +26,7 @@
     </div>
     <!--  Categoties-->
     <div class="flex flex-col px-10 py-12 justify-between">
-      <categories-paragraph/>
+      <categories-paragraph :categories="$t('categories')" :see-all="$t('see_all')"/>
     </div>
     <div class="py-2 px-6 md:hover:border-red">
       <base-carousel
@@ -41,7 +41,7 @@
         <div class="prod_par_image">
           <img src="@/assets/hot-dog-pizza.png" alt="" class="w-full">
         </div>
-        <h2 class="uppercase text-51 text-2xl font-semibold font-serif ml-4 dark:text-white">ՊԻՑՑԱ ՀՈԹ-ԴՈԳ</h2>
+        <h2 class="uppercase text-51 text-2xl font-semibold font-serif ml-4 dark:text-white">{{$t('pizza_hot_dog')}}</h2>
       </div>
       <div class="flex flex-wrap flex-row my-14">
         <product-card
@@ -62,7 +62,7 @@ import ProductCard from "@/components/Product-Card";
 import SearchProduct from "@/views/home/search/Search-Product";
 import BaseCarousel from "@/views/home/carousel/Base-Carousel";
 import CategoriesParagraph from "@/components/CategoriesParagraph";
-
+import {useI18n} from "vue-i18n";
 
 export default {
   components: {
@@ -72,6 +72,13 @@ export default {
     ProductCard,
     BaseButton,
     BaseInput,
+  },
+  setup() {
+    const {  locale } = useI18n({useScope: 'global'})
+
+    return {
+      locale
+    }
   },
   data(){
     return {

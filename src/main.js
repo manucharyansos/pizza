@@ -16,4 +16,24 @@ library.add(far);
 import { dom } from "@fortawesome/fontawesome-svg-core";
 dom.watch();
 
-createApp(App).component("font-awesome-icon", FontAwesomeIcon).use(store).use(router).use(VIcon, { set: 'outline' }).mount('#app')
+import { createI18n } from 'vue-i18n';
+import {language} from "@/i18n";
+import {defaultlocal} from "@/i18n";
+
+const messages = Object.assign(language)
+
+const i18n = createI18n({
+    legacy: false,
+    locale: defaultlocal,
+    fallbackLocale: 'en',
+    messages
+})
+
+
+createApp(App)
+    .component("font-awesome-icon", FontAwesomeIcon)
+    .use(store)
+    .use(router)
+    .use(VIcon, { set: 'outline' })
+    .use(i18n)
+    .mount('#app')

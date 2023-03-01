@@ -20,7 +20,7 @@
 			C8,7.9,7.5,8.5,6.9,8.5z" class="st2 stroke-white fill-red"></path><path _ngcontent-kxi-c24="" d="M13.3,4.8l1.5-0.3c0,0,1.5,0.7,1.5,1.6s-0.1,1.8-0.1,1.8l0.4,0.5c0,0,1.5,0,1.6-0.1c0.2-0.2,0.2-2.6,0-2.7
 			c-0.6,0-1.7,0.2-1.7,0.2" class="st2 stroke-white fill-red"></path></g></g></svg>
           <p class="mx-2 w-2/3 font-serif text-md font-normal">
-            Առաքում
+            {{delivery}}
           </p>
         </div>
       <div class="flex flex-row items-center">
@@ -64,6 +64,9 @@ export default {
     },
     totalBasket: {
       type: Number
+    },
+    delivery: {
+      type: String
     }
   },
   methods: {

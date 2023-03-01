@@ -5,10 +5,10 @@
         <div class="category_img">
           <img src="@/assets/categories.svg" alt="">
         </div>
-        <p class="text-51 text-xl font-semibold font-serif leading-6 dark:text-white">ԿԱՏԵԳՈՐԻԱՆԵՐ</p>
+        <p class="text-51 text-xl font-semibold font-serif leading-6 dark:text-white">{{categories}}</p>
       </div>
       <div class="flex flex-row items-center float-right ml-auto mr-2">
-        <router-link to="/categories" class="text-red cursor-pointer text-lg font-serif font-normal mr-6">Տեսնել բոլորը</router-link>
+        <router-link to="/categories" class="text-red cursor-pointer text-lg font-serif font-normal mr-6">{{seeAll}}</router-link>
         <div>
           <button class="rbtn border border-silver rounded-tl-lg rounded-bl-lg hover:text-red font-semibold text-silver">
             <font-awesome-icon icon="fa-solid fa-chevron-left" />
@@ -25,7 +25,15 @@
 
 <script>
 export default {
-  name: "CategoriesParagraph"
+  name: "CategoriesParagraph",
+  props: {
+    seeAll: {
+      type: String
+    },
+    categories: {
+      type: String
+    }
+  }
 }
 </script>
 
