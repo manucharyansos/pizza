@@ -47,6 +47,7 @@
         <product-card
             :data="getProducts"
             @addToBasket="addToBasket"
+            :add="$t('add')"
         />
       </div>
     </div>

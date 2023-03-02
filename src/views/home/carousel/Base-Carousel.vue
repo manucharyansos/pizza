@@ -11,7 +11,15 @@
             >
           </template>
           <div class="category_name uppercase absolute z-10 bottom-0 flex items-center justify-center text-white font-serif text-lg font-semibold">
-            <p class="flex text-center content-center items-center justify-center m-auto">{{slide.name}}</p>
+            <template v-if="locale === 'en'">
+              <p class="flex text-center content-center items-center justify-center m-auto">{{slide.name.en}}</p>
+            </template>
+            <template v-if="locale === 'am'">
+              <p class="flex text-center content-center items-center justify-center m-auto">{{slide.name.am}}</p>
+            </template>
+            <template v-if="locale === 'ru'">
+              <p class="flex text-center content-center items-center justify-center m-auto">{{slide.name.ru}}</p>
+            </template>
           </div>
         </div>
       </div>
@@ -26,12 +34,20 @@
 <script>
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import {useI18n} from "vue-i18n";
 export default {
   name: "Base-Carousel",
   components: {
     Carousel,
     Slide,
     Navigation
+  },
+  setup() {
+    const {  locale } = useI18n({useScope: 'global'})
+
+    return {
+      locale
+    }
   },
   props: {
     slideData: {
@@ -59,6 +75,17 @@ export default {
         },
       },
     }
+  },
+  methods: {
+    a(){
+      // for (let item of this.slideData){
+      //   // console.log(item.name)
+      // }
+    }
+  },
+  mounted() {
+    console.log(this.locale)
+    this.a()
   }
 }
 </script>

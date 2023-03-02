@@ -3,25 +3,63 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     categories: [
-      {id: 1, name: 'Սիրո Պիցցա', imageName: 'siro-pizza.webp'},
-      {id: 2, name: 'Հատուկ ատաջարկներ', imageName: 'hatuk-aragark.webp'},
-      {id: 3, name: 'Հռոմեական պիցցաներ', imageName: 'hromeakan-pizzas.webp'},
-      {id: 4, name: 'Պիցցաներ', imageName: 'pizzas.webp'},
-      {id: 5, name: 'Պիցցա Հոթ-դոգ', imageName: 'pizza-hot-dog.webp'},
-      {id: 6, name: 'Բուրգերներ ', imageName: 'boorgers.webp'},
-      {id: 7, name: 'Աղցաններ ', imageName: 'salads.webp'},
-      {id: 8, name: 'Խորտիկներ ', imageName: 'xortikner.webp'},
-      {id: 9, name: 'Սենդվիչներ և Ռոլլեր ', imageName: 'sendviches.webp'},
-      {id: 10, name: 'Բոքսեր  ', imageName: 'boxes.webp'},
-      {id: 11, name: 'Ըմպելիքներ  ', imageName: 'drinks.webp'},
-      {id: 11, name: 'Սոուսներ  ', imageName: 'sous.webp'},
-      {id: 12, name: 'Աղանդներ  ', imageName: 'axand.webp'},
+      {id: 1, name:
+        {am: 'Սիրո Պիցցա', en: 'Love Pizza', ru: 'Любовная пицца'},
+        imageName: 'siro-pizza.webp'},
+      {id: 2, name:
+            {am: 'Հատուկ ատաջարկներ', en: 'Special offers', ru: 'Специальные предложения'},
+        imageName: 'hatuk-aragark.webp'},
+      {id: 3, name:
+            {am: 'Հռոմեական պիցցաներ', en: 'Roman pizzas', ru: 'Римские пиццы',},
+        imageName: 'hromeakan-pizzas.webp'},
+      {id: 4, name:
+            { am: 'Պիցցաներ', en: 'Pizzas', ru: 'Пиццы'},
+        imageName: 'pizzas.webp'},
+      {id: 5, name:
+            {am: 'Պիցցա Հոթ-դոգ', en: 'Hot dog pizza', ru: 'Хот-дог пицца'},
+        imageName: 'pizza-hot-dog.webp'},
+      {id: 6, name:
+            {am: 'Բուրգերներ', en: 'Burgers', ru: 'Бургеры'},
+        imageName: 'boorgers.webp'},
+      {id: 7, name:
+            {am: 'Աղցաններ', en: 'Salads', ru: 'Салаты'},
+        imageName: 'salads.webp'},
+      {id: 8, name:
+            {am: 'Խորտիկներ', en: 'Snacks', ru: 'Закуски'},
+        imageName: 'xortikner.webp'},
+      {id: 9, name:
+            {am: 'Սենդվիչներ և Ռոլլեր ', en: 'Sandwiches and Rolls', ru: 'Сэндвичи и роллы'},
+        imageName: 'sendviches.webp'},
+      {id: 10, name:
+            {am: 'Բոքսեր', en: 'Boxer', ru: 'Боксер'},
+        imageName: 'boxes.webp'},
+      {id: 11, name:
+            {am: 'Ըմպելիքներ', en: 'Drinks', ru: 'Напитки'},
+        imageName: 'drinks.webp'},
+      {id: 11, name:
+            {am: 'Սոուսներ', en: 'Sauces', ru: 'Соусы'},
+        imageName: 'sous.webp'},
+      {id: 12, name:
+            {am: 'Աղանդներ', en: 'Sects', ru: 'секты'},
+        imageName: 'axand.webp'},
     ],
     products: [
-      { id: 1, name: 'Պեպպերոնիի Սիրահարներ', price: '3700', image: '2544a8ba-d0d5-9951-b2b1-d24a72c7a221_2.webp'},
-      { id: 2, name: 'Հաթ-Սուպրիմ ', price: '3800', image: '2544a8ba-d0d5-9951-b2b1-d24a72c7a221_2.webp'},
-      { id: 3, name: 'Կծու մսային  ', price: '3600', image: '2544a8ba-d0d5-9951-b2b1-d24a72c7a221_2.webp'},
-      { id: 4, name: ' Մսի Սիրահարներ  ', price: '3800', image: '2544a8ba-d0d5-9951-b2b1-d24a72c7a221_2.webp'},
+      { id: 1,
+        name: {
+          am: 'Պեպպերոնիի Սիրահարներ', en: 'Pepperoni Lovers', ru: 'Любители пепперони'
+        }, price: '3700', image: '2544a8ba-d0d5-9951-b2b1-d24a72c7a221_2.webp'},
+      { id: 2,
+        name: {
+          am: 'Հաթ-Սուպրիմ ', en: 'HUT-SUPREME', ru: 'СУПРИМ-ХАТ'
+        }, price: '3800', image: '2544a8ba-d0d5-9951-b2b1-d24a72c7a221_2.webp'},
+      { id: 3,
+        name: {
+          am: 'Կծու մսային ', en: 'SPICY MEAT', ru: 'ОСТРАЯ МЯСНАЯ'
+        }, price: '3600', image: '2544a8ba-d0d5-9951-b2b1-d24a72c7a221_2.webp'},
+      { id: 4,
+        name: {
+          am: ' Մսի Սիրահարներ', en: 'MEET LOVERS', ru: 'ЛЮБИТЕЛИ МЯСА'
+        }, price: '3800', image: '2544a8ba-d0d5-9951-b2b1-d24a72c7a221_2.webp'},
     ],
     basket: [],
     searchProd: []

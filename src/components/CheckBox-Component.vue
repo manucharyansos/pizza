@@ -1,21 +1,9 @@
 <template>
   <div class="language mt-16 ml-8">
     <div class="flex justify-start items-center my-2"
-         v-for="(lang, index) of selectLanguage"
+         v-for="(language, index) of selectLanguage"
          :key="index"
     >
-<!--      <input-->
-<!--          :id="index"-->
-<!--          class="mr-2.5"-->
-<!--          type="radio"-->
-<!--      >-->
-<!--      <label-->
-<!--          class="font-serif text-xl text-silver cursor-pointer"-->
-<!--          @click="$emit('changeLanguage', lang.val)"-->
-<!--          :for="index">-->
-<!--        {{lang.name}} - {{lang.val}}-->
-<!--      </label>-->
-
       <div class="flex items-center mb-4">
         <input
             :id="index"
@@ -23,9 +11,14 @@
             :value="modelValue"
             @input="switchLanguage"
             name="default-radio"
-            @click="$emit('changeLanguage', lang.val)"
+            @click="$emit('changeLanguage', language)"
             class="mr-2.5">
-        <label :for="index" class="font-serif text-xl text-silver cursor-pointer">{{lang.name}} - {{lang.val}}</label>
+        <label
+            :for="index"
+            class="font-serif text-xl text-silver cursor-pointer"
+        >
+          {{language.name}} - {{language.lang}}
+        </label>
       </div>
 
     </div>

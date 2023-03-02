@@ -22,9 +22,11 @@ import {defaultlocal} from "@/i18n";
 
 const messages = Object.assign(language)
 
+const localStorageLang = localStorage.getItem('lang')
+
 const i18n = createI18n({
     legacy: false,
-    locale: defaultlocal,
+    locale: localStorageLang || defaultlocal,
     fallbackLocale: 'en',
     messages
 })

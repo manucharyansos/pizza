@@ -1,7 +1,8 @@
 {
   "delivery": "Доставка",
   "all_products": "Все продукты",
-  "categories": "Категории",
+  "categories": "КАТЕГОРИИ",
   "see_all": "Увидеть все",
-  "pizza_hot_dog": "Пицца горячая дог"
+  "pizza_hot_dog": "ПИЦЦА ХОТ-ДОГ",
+  "add": "Добавлять"
 }

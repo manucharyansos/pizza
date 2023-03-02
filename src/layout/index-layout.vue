@@ -12,17 +12,20 @@
       </base-header>
     </div>
     <template v-if="isOpenLanguage">
-      <div class="w-1/5 fixed z-30 top-0 right-0 h-full bg-white border border-l-silver dark:bg-mBlack">
-        <close-component
-            @close="openLanguage"
-            imgURL="close.svg"
-        />
-        <div>
-          <check-box-component
-              v-model:modelValue="language"
-              :select-language="selectLanguage"
-              @changeLanguage="changeLanguage"
+      <div class="w-full flex flex-row fixed h-full bars_div z-50 top-0">
+        <div class="bars_div w-9/12" @click="isOpenLanguage = !isOpenLanguage"></div>
+        <div class="w-3/12 fixed z-30 top-0 right-0 h-full bg-white border border-l-silver-200 dark:border-51 dark:bg-mBlack">
+          <close-component
+              @close="openLanguage"
+              imgURL="close.svg"
           />
+          <div>
+            <check-box-component
+                v-model:modelValue="language"
+                :select-language="selectLanguage"
+                @changeLanguage="changeLanguage"
+            />
+          </div>
         </div>
       </div>
     </template>
@@ -144,9 +147,9 @@ export default {
         { id: 2, name: 'fa-brands fa-instagram', val: 'instagram'},
       ],
       selectLanguage: [
-        {id: 1, name: 'ՀԱՅԵՐԵՆ', val: 'HY'},
-        {id: 2, name: 'ENGLISH(US)', val: 'EN'},
-        {id: 3, name: 'РУССКИЙ', val: 'RU'},
+        {id: 1, name: 'ՀԱՅԵՐԵՆ', val: 'am', lang: 'HY'},
+        {id: 2, name: 'ENGLISH(US)', val: 'en', lang: 'EN'},
+        {id: 3, name: 'РУССКИЙ', val: 'ru', lang: 'RU'},
       ],
     }
   },
@@ -171,17 +174,13 @@ export default {
     openLanguage(){
       this.isOpenLanguage = !this.isOpenLanguage
     },
-    changeLanguage(val){
-      this.language = val
-      if (this.language === 'EN'){
-        this.locale = 'en'
-      }
-      if (this.language === 'RU'){
-        this.locale = 'ru'
-      }
-      if (this.language === 'HY'){
-        this.locale = 'am'
-      }
+    changeLanguage(languages){
+      localStorage.setItem('lang', languages.val)
+      this.language = languages.lang
+      this.locale = languages.val
+      setTimeout(() =>{
+        this.isOpenLanguage =false
+      }, 300)
     },
 
     minusToBasket(index){
