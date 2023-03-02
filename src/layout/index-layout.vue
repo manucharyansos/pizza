@@ -32,18 +32,23 @@
     <!--      Bars -->
     <div v-if="isBars">
       <div class="w-full flex flex-row fixed h-full bars_div z-50 top-0">
-        <div class="bars_div w-9/12" @click="isBars = !isBars"></div>
-        <div class="bars_div w-3/12 shadow-2xl bg-white dark:bg-mBlack dark:border-silver">
+        <div class="bars_div w-7/12 lg:w-8/12 xl:w-9/12" @click="isBars = !isBars"></div>
+        <div class="bars_div w-5/12 lg:w-4/12 xl:w-3/12 shadow-2xl bg-white dark:bg-mBlack dark:border-silver">
           <close-component
               @close="isBars = !isBars"
               imgURL="close.svg"
           />
-          <div class="mt-32 block xl:hidden">dsfgdgdfgfd</div>
-          <div class="flex flex-row p-5 mt-32 lg:mt-32">
+          <div class="flex flex-row p-5 mt-32 block xl:hidden">
+            <div class="bars_image">
+              <img src="@/assets/myOrders.svg" class="w-full" alt="">
+            </div>
+           <p class="text-51 dark:text-white text-2xl font-serif ml-2">{{$t('orders')}} </p>
+          </div>
+          <div class="flex flex-row p-5 mt-0 xl:mt-32">
             <div class="bars_image">
               <img src="@/assets/feedback.svg" class="w-full" alt="">
             </div>
-            <router-link to="/feedback" class="text-51 dark:text-white text-2xl font-serif ml-2">Հետադարձ կապ</router-link>
+            <router-link to="/feedback" class="text-51 dark:text-white text-2xl font-serif ml-2">{{$t('feedback')}}</router-link>
           </div>
         </div>
       </div>
@@ -55,7 +60,7 @@
             imgURL="close.svg"
         />
         <div class="flex flex-row justify-between items-center mt-24 px-6">
-          <p class="text-51 dark:text-white text-lg font-semibold font-serif">ԶԱՄԲՅՈՒՂ</p>
+          <p class="text-51 dark:text-white text-lg font-semibold font-serif">{{$t('basket')}}</p>
           <div class="basket_delete p-1.5 border border-red rounded-lg cursor-pointer" @click="removeBasket">
             <img src="@/assets/delete.svg" alt="">
           </div>
@@ -66,7 +71,15 @@
               <img :src="require(`@/assets/${basket.image}`)" alt="">
             </div>
             <div class="flex items-start justify-start w-7/12">
-              <p class="mb-8 ml-2 text-sm text-mBlack dark:text-white font-serif">{{basket.name}}</p>
+              <template v-if="locale === 'en'">
+                <p>{{basket.name.en}}</p>
+              </template>
+              <template v-if="locale === 'am'">
+                <p>{{basket.name.am}}</p>
+              </template>
+              <template v-if="locale === 'ru'">
+                <p>{{basket.name.ru}}</p>
+              </template>
             </div>
             <div class="basket_quantity flex flex-row items-center justify-center w-3/12">
               <button class="flex items-center justify-center text-red text-xl font-bold m-3 p-2 rounded-lg" @click="minusToBasket(index)">
@@ -89,11 +102,36 @@
         </div>
         <div class="basketButton flex justify-center">
           <button class="w-full bg-red p-3 rounded-lg m-8 text-white hover:bg-redS">
-            Ավարտել
+            {{$t('finish')}}
           </button>
         </div>
       </div>
     </template>
+
+    <!--  Top main-->
+    <div class="flex flex-row px-12 mt-16 w-full ">
+      <div class="float-left">
+        <base-button>
+          <span>{{$t('all_products')}}</span>
+        </base-button>
+      </div>
+      <div class="flex flex-row float-right ml-auto relative input_component">
+        <base-input
+            type="text"
+            v-model:modelValue="searchable"
+        />
+        <div class="searchImg bg-red rounded-xl ml-4" @click="searchFilter">
+          <img src="@/assets/searchWhite.svg" alt="">
+        </div>
+        <!--      Searched Product-->
+        <template v-if="isSearch">
+          <div class="absolute duration-70 top-0 z-30 py-6 flex flex-row flex-wrap justify-start border border-silver-200 dark:border-51 rounded-bl-2xl rounded-br-2xl my-14 bg-white dark:bg-mBlack w-full">
+            <search-product :data="filteredList()"
+            />
+          </div>
+        </template>
+      </div>
+    </div>
     <router-view/>
     <base-footer
         :data="footerAddress"
@@ -101,20 +139,34 @@
         :icon-name="social"
         @socialIcon="goSocial"
     />
+    <responsive-footer :delivery="$t('delivery')"/>
   </div>
 </template>
 
 <script>
-import BaseHeader from "@/layout/header/Base-Header";
-import BaseFooter from "@/layout/footer/Base-Footer";
+import BaseHeader from "@/layout/header/Index-Header";
+import BaseFooter from "@/layout/footer/Index-Footer";
 import CloseComponent from "@/components/CloseComponent";
 import CheckBoxComponent from "@/components/CheckBox-Component";
 import {mapActions, mapGetters} from "vuex";
 import {useI18n} from "vue-i18n";
+import BaseInput from "@/components/Base-Input";
+import BaseButton from "@/components/Base-Button";
+import SearchProduct from "@/views/home/search/Search-Product";
+import ResponsiveFooter from "@/layout/footer/Responsive-Footer";
 
 export default {
   name: "index-layout",
-  components: {BaseFooter, BaseHeader, CloseComponent, CheckBoxComponent},
+  components: {
+    ResponsiveFooter,
+    BaseFooter,
+    BaseHeader,
+    CloseComponent,
+    CheckBoxComponent,
+    SearchProduct,
+    BaseButton,
+    BaseInput,
+  },
   setup() {
     const {  locale } = useI18n({useScope: 'global'})
 
@@ -124,6 +176,8 @@ export default {
   },
   data() {
     return {
+      isSearch: false,
+      searchable: '',
       isBars: false,
       basketTotal: 0,
       isOpenLanguage: false,
@@ -156,10 +210,20 @@ export default {
   watch: {
     basketTotal(){
       this.basketTotal = this.getBasket.length
+    },
+    searchable(val){
+      console.log(val)
+      if (val.length > 2){
+        setTimeout(()=>{
+          this.isSearch = true
+        }, 2000)
+      }else {
+        this.isSearch = false
+      }
     }
   },
   computed: {
-    ...mapGetters(['getBasket'])
+    ...mapGetters(['getBasket', 'getProducts'])
   },
   methods: {
     ...mapActions(['addBasket', 'minusProduct', 'plusProduct', 'deleteProductByIndex', 'removeAllBasket', 'findSearched']),
@@ -203,7 +267,34 @@ export default {
     },
     goSocial(val){
       window.location.href = `http://${val}.com`
-    }
+    },
+    filteredList() {
+      return this.getProducts.filter((product) => {
+        if (this.locale === 'am'){
+          return product.name.am
+              .toLowerCase()
+              .includes(this.searchable.toLowerCase())
+        }
+        if (this.locale === 'en'){
+          return product.name.en
+              .toLowerCase()
+              .includes(this.searchable.toLowerCase())
+        }
+        if (this.locale === 'ru'){
+          return product.name.ru
+              .toLowerCase()
+              .includes(this.searchable.toLowerCase())
+        }
+      })
+    },
+    searchFilter(){
+      if (this.searchable !== ''){
+        this.filteredList().map((a) => {
+          this.findSearched(a)
+          this.$router.push(`/edit/${a.id}`)
+        })
+      }
+    },
   }
 }
 </script>
@@ -223,5 +314,10 @@ export default {
 
 .basket_delete{
   width: 30px;
+}
+.searchImg{
+  width: 40px;
+  height: 40px;
+  padding: 10px;
 }
 </style>

@@ -12,7 +12,8 @@ module.exports = {
         'silver': '#9d9d9d',
         'mSilver': '#6c757d',
         'mBlack': '#3d3d3d',
-        '51': '#515151'
+        '51': '#515151',
+        'mBlue': '#007bff'
       }
     },
     // fontSize: {

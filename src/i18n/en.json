@@ -4,5 +4,9 @@
   "categories": "CATEGORIES",
   "see_all": "See All",
   "pizza_hot_dog": "PIZZA HOT DOG",
-  "add": "Add"
+  "add": "Add",
+  "basket": "BASKET",
+  "finish": "Finish",
+  "orders": "Orders",
+  "feedback": "Feedback"
 }

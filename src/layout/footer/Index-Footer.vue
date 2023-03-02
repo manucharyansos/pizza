@@ -1,5 +1,5 @@
 <template>
-  <div class="footer_content flex flex-row justify-between p-12 bg-mSilver">
+  <div class="hidden lg:flex footer_content flex-row justify-between p-12 bg-mSilver">
     <div class="flex flex-col justify-start items-start text-white ">
       <div v-for="item of data" :key="item.id" class="flex flex-row items-center cursor-pointer">
         <div class="locationImage mr-2">

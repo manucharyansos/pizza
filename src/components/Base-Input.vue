@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-        class="input placeholder:italic placeholder:text-slate-400 block bg-white dark:bg-mBlack dark:text-white w-full border border-slate-200 dark:border-51 rounded-lg py-2 pl-3 pr-3"
+        class="input placeholder:italic placeholder:text-slate-400 block bg-white dark:bg-mBlack dark:text-white w-full border border-slate-200 dark:border-51 rounded-lg py-2 pl-3 pr-3 md:w-full"
         placeholder="Type the name of dish..."
         :type="type"
         :value="modelValue"
@@ -54,6 +54,11 @@ export default {
 @media screen and (max-width: 1110px){
   .input{
     width: 500px;
+  }
+}
+@media screen and (max-width: 930px){
+  .input{
+    width: 300px;
   }
 }
 </style>
