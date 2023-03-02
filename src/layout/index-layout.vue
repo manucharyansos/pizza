@@ -4,7 +4,7 @@
       <base-header :delivery="$t('delivery')" :total-basket="basketTotal" @clickBasket="openBasket" @barsClick="bars">
         <template v-slot:language>
         <span
-            class="font-semibold font-xl text-silver dark:text-white"
+            class="font-semibold font-xl font-normal text-white bg-red rounded-md p-2 lg:bg-white dark:text-white lg:text-silver"
             @click="openLanguage">
           {{ language }}
         </span>
@@ -14,7 +14,7 @@
     <template v-if="isOpenLanguage">
       <div class="w-full flex flex-row fixed h-full bars_div z-50 top-0">
         <div class="bars_div w-9/12" @click="isOpenLanguage = !isOpenLanguage"></div>
-        <div class="w-3/12 fixed z-30 top-0 right-0 h-full bg-white border border-l-silver-200 dark:border-51 dark:bg-mBlack">
+        <div class="w-2/5  fixed z-30 top-0 right-0 h-full bg-white border border-l-silver-200 dark:border-51 dark:bg-mBlack">
           <close-component
               @close="openLanguage"
               imgURL="close.svg"

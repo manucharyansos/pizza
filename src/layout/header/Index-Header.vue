@@ -26,7 +26,7 @@
           </p>
         </div>
       <div class="flex flex-row items-center">
-        <div @click="toggleDark"  class="header_dark_mode m-1 border rounded-3xl flex flex-row items-center relative p-1 cursor-pointer">
+        <div @click="toggleDark"  class="header_dark_mode m-1 border rounded-3xl hidden lg:flex flex-row items-center relative p-1 cursor-pointer">
           <div class="bg-red bark_mode_button rounded-3xl absolute" :class="{ l_modeDin: isActive }"></div>
           <p :class="{ l_mod: isActive }" class="l_mode text-twXs float-right text-right text-51 leading-none py-1 dark:text-white">Light mode</p>
           <p v-if="isActive" :class="{ d_mod: isActive }" class="d_mode float-left text-left text-51 leading-none py-1 w-2/3 dark:text-white">Dark mode</p>
@@ -34,15 +34,15 @@
         <div class="cursor-pointer m-1 font-semibold text-xl mx-2 dark:text-white">
           <slot name="language"></slot>
         </div>
-        <router-link to="/login" class="header_avatar m-1 cursor-pointer mx-2">
+        <router-link to="/login" class=" hidden lg:flex header_avatar m-1 cursor-pointer mx-2">
           <img src="@/assets/user.svg" alt="image" class="w-full rounded-3xl">
         </router-link>
-        <div class="header_basket m-1 cursor-pointer mx-2" @click="$emit('clickBasket')">
+        <div class="header_basket hidden lg:flex m-1 cursor-pointer mx-2" @click="$emit('clickBasket')">
           <img src="@/assets/basket.svg" alt="image" class="w-full rounded-3xl">
           <div class="basket_total flex items-center justify-center text-white">{{totalBasket}}</div>
         </div>
-        <div class="header_bars m-1 cursor-pointer mx-2" @click="$emit('barsClick')">
-          <img src="@/assets/burger-icon.svg" alt="image" class="rounded-3xl">
+        <div class="header_bars lg:border-red dark:border-51 m-1 border-inherit cursor-pointer mx-2" @click="$emit('barsClick')">
+          <img src="@/assets/burger-icon.svg" alt="image" class="rounded-xl border-inherit">
         </div>
       </div>
     </nav>
