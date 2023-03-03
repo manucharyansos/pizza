@@ -13,7 +13,7 @@
         </div>
       </router-link>
 
-        <div class=" hidden lg:flex flex-row delivery items-center justify-center bg-red text-white rounded-xl p-2 hover:bg-redS cursor-pointer stroke-white h-10">
+        <div class=" hidden md:flex flex-row delivery items-center justify-center bg-red text-white rounded-xl p-2 hover:bg-redS cursor-pointer stroke-white h-10">
            <div class="h-9 w-3/12 mt-2">
              <svg  version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 22" xml:space="preserve" style="enable-background: new 0 0 22 22;"><g _ngcontent-kxi-c24=""><g _ngcontent-kxi-c24=""><path _ngcontent-kxi-c24="" d="M1.8,16h12.9c0.2,0,0.3-0.1,0.5-0.2l1.2-0.8c0.9-0.6,1.9-0.9,2.9-0.9h0.2c0.3,0,0.6-0.1,0.8-0.4l0.8-0.8
 			c0,0-1-1.2-2.3-1.1s-2.4,1-2.4,1" class="st2 stroke-white fill-red hover:bg-redS" ></path><line _ngcontent-kxi-c24="" x1="0.8" y1="13.5" x2="7.8" y2="13.5" class="st2 stroke-white fill-white hover:bg-redS"></line><path _ngcontent-kxi-c24="" d="M1.8,16c0,0-0.6-2.5,0.5-3.8C3,11.3,4.1,11,4.1,11h6.6c0,0-0.5,1.4,0,2.1c0.5,0.7,1.1,1.1,2,1.1
@@ -26,23 +26,26 @@
           </p>
         </div>
       <div class="flex flex-row items-center">
-        <div @click="toggleDark"  class="header_dark_mode m-1 border rounded-3xl hidden lg:flex flex-row items-center relative p-1 cursor-pointer">
+        <div class=" md:hidden searchImg bg-red rounded-xl ml-4" @click="$emit('searchFilter')">
+          <img src="@/assets/searchWhite.svg" alt="">
+        </div>
+        <div @click="toggleDark"  class="header_dark_mode m-1 border rounded-3xl hidden md:flex flex-row items-center relative p-1 cursor-pointer">
           <div class="bg-red bark_mode_button rounded-3xl absolute" :class="{ l_modeDin: isActive }"></div>
           <p :class="{ l_mod: isActive }" class="l_mode text-twXs float-right text-right text-51 leading-none py-1 dark:text-white">Light mode</p>
           <p v-if="isActive" :class="{ d_mod: isActive }" class="d_mode float-left text-left text-51 leading-none py-1 w-2/3 dark:text-white">Dark mode</p>
         </div>
-        <div class="cursor-pointer m-1 font-semibold text-xl mx-2 dark:text-white">
+        <div class="cursor-pointer m-1 font-semibold text-xl mx-2 dark:text-white dark:bg-mBlack">
           <slot name="language"></slot>
         </div>
-        <router-link to="/login" class=" hidden lg:flex header_avatar m-1 cursor-pointer mx-2">
+        <router-link to="/login" class=" hidden md:flex header_avatar m-1 cursor-pointer mx-2">
           <img src="@/assets/user.svg" alt="image" class="w-full rounded-3xl">
         </router-link>
-        <div class="header_basket hidden lg:flex m-1 cursor-pointer mx-2" @click="$emit('clickBasket')">
+        <div class="header_basket hidden md:flex m-1 cursor-pointer mx-2" @click="$emit('clickBasket')">
           <img src="@/assets/basket.svg" alt="image" class="w-full rounded-3xl">
           <div class="basket_total flex items-center justify-center text-white">{{totalBasket}}</div>
         </div>
-        <div class="header_bars lg:border-red dark:border-51 m-1 border-inherit cursor-pointer mx-2" @click="$emit('barsClick')">
-          <img src="@/assets/burger-icon.svg" alt="image" class="rounded-xl border-inherit">
+        <div class="dark:border-51 p-2.5 border md:border-none cursor-pointer rounded-lg" @click="$emit('barsClick')">
+          <img src="@/assets/burger-icon.svg" alt="image" class="header_bars rounded-lg w-full">
         </div>
       </div>
     </nav>
@@ -139,5 +142,10 @@ export default {
 
 .delivery{
   width: 130px;
+}
+.searchImg{
+  width: 40px;
+  height: 40px;
+  padding: 10px;
 }
 </style>

@@ -1,18 +1,23 @@
 <template>
   <div>
     <!--  Categoties-->
-    <div class="flex flex-col px-10 py-12 justify-between">
-      <categories-paragraph :categories="$t('categories')" :see-all="$t('see_all')"/>
+    <div class="hidden md:flex flex-col px-10 py-12 ">
+      <div class="justify-between">
+        <categories-paragraph :categories="$t('categories')" :see-all="$t('see_all')"/>
+      </div>
+      <div class="py-2 md:hover:border-red">
+        <base-carousel
+            :items-to-show="6"
+            :slide-data="getCategories"
+            classe="category"
+        />
+      </div>
     </div>
-    <div class="py-2 px-6 md:hover:border-red">
-      <base-carousel
-          :items-to-show="6"
-          :slide-data="getCategories"
-          classe="category"
-      />
+    <div class="responsive_category flex md:hidden grid grid-cols-2 gap-2 px-10 py-12">
+      <index-categories :categories="getCategories"/>
     </div>
     <!--Products-->
-    <div class="flex flex-col px-12 py-8">
+    <div class="hidden md:flex flex-col px-12 py-8">
       <div class="flex flex-row mr-auto items-center">
         <div class="prod_par_image">
           <img src="@/assets/hot-dog-pizza.png" alt="" class="w-full">
@@ -36,9 +41,11 @@ import ProductCard from "@/components/Product-Card";
 import BaseCarousel from "@/views/home/carousel/Base-Carousel";
 import CategoriesParagraph from "@/components/CategoriesParagraph";
 import {useI18n} from "vue-i18n";
+import IndexCategories from "@/views/home/categories/Index-Categories";
 
 export default {
   components: {
+    IndexCategories,
     CategoriesParagraph,
     BaseCarousel,
     ProductCard,

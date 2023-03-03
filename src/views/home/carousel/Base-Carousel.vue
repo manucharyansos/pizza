@@ -99,20 +99,24 @@ export default {
 .category_name{
   background: rgba(0,0,0,.5);
   width: 100%;
-  height: 60px;
+  height: 3.5rem;
+}
+@media screen and (max-width: 1350px){
+  .category{
+    width: 12rem;
+    height: 12rem;
+  }
 }
 @media screen and (max-width: 1300px){
-
   .category{
-    width: 178px;
-    height: 178px;
+    width: 11rem;
+    height: 11rem;
   }
 }
 @media screen and (max-width: 1150px){
-
   .category{
-    width: 138px;
-    height: 138px;
+    width: 9.5rem;
+    height: 9.5rem;
   }
 }
 </style>

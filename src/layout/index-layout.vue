@@ -1,10 +1,16 @@
 <template>
   <div class="dark:bg-mBlack">
     <div class="sticky top-0 bg-white z-20">
-      <base-header :delivery="$t('delivery')" :total-basket="basketTotal" @clickBasket="openBasket" @barsClick="bars">
+      <base-header
+          :delivery="$t('delivery')"
+          :total-basket="basketTotal"
+          @clickBasket="openBasket"
+          @barsClick="bars"
+          @searchFilter="openSearchContent"
+      >
         <template v-slot:language>
         <span
-            class="font-semibold font-xl font-normal text-white bg-red rounded-md p-2 lg:bg-white dark:text-white lg:text-silver"
+            class="font-semibold font-xl font-normal text-white bg-red rounded-md p-2 md:bg-white dark:text-white dark:bg-mBlack md:text-silver"
             @click="openLanguage">
           {{ language }}
         </span>
@@ -109,7 +115,7 @@
     </template>
 
     <!--  Top main-->
-    <div class="flex flex-row px-12 mt-16 w-full ">
+    <div class=" hidden md:flex flex-row px-12 mt-16 w-full">
       <div class="float-left">
         <base-button>
           <span>{{$t('all_products')}}</span>
@@ -295,6 +301,9 @@ export default {
         })
       }
     },
+    openSearchContent(){
+      alert(123)
+    }
   }
 }
 </script>

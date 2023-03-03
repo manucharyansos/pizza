@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row h-24 w-full bg-white fixed bottom-0 lg:hidden px-6">
+  <div class="flex flex-row h-24 w-full bg-white fixed bottom-0 md:hidden px-6 z-50">
 <!--    basic-->
     <div class=" flex flex-col mx-auto items-center justify-center footer_basic w-2/12">
       <div class="footer_img my-2">
