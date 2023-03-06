@@ -1,6 +1,6 @@
 <template>
   <div
-      class="category cursor-pointer overflow-hidden rounded-3xl m-4 relative block "
+      class="category cursor-pointer overflow-hidden rounded-3xl m-1 relative block h-auto"
       v-for="category of categories"
       :key="category.id"
   >
@@ -8,10 +8,10 @@
       <img
           :src="require(`@/assets/${category.imageName}`)"
           alt="image"
-          class="w-full h-full rounded-3xl duration-700 hover:scale-110"
+          class="category_img w-full h-full rounded-3xl duration-700 hover:scale-110"
       >
     </template>
-    <div class="category_name uppercase absolute z-10 bottom-0 flex items-center justify-center text-white font-serif text-lg font-semibold">
+    <div class="category_name uppercase absolute z-10 bottom-0 flex items-center justify-center text-white font-serif text-md md:text-lg font-semibold">
       <template v-if="locale === 'en'">
         <p class="flex text-center content-center items-center justify-center m-auto">{{category.name.en}}</p>
       </template>
@@ -45,14 +45,19 @@ export default {
 </script>
 
 <style scoped>
-.category{
-  width: 19rem;
-  height: 19rem;
+.category_img{
+  /*width: 21rem;*/
+  height: 21rem;
 }
 
 .category_name{
   background: rgba(0,0,0,.5);
   width: 100%;
   height: 3.5rem;
+}
+@media screen and (max-width: 664px){
+.category_img{
+  height: 15rem;
+}
 }
 </style>

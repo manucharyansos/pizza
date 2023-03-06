@@ -13,7 +13,7 @@
         />
       </div>
     </div>
-    <div class="responsive_category flex md:hidden grid grid-cols-2 gap-2 px-10 py-12">
+    <div class="responsive_category flex md:hidden grid grid-cols-2 gap-2 row-span-1 px-10 py-12">
       <index-categories :categories="getCategories"/>
     </div>
     <!--Products-->

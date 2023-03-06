@@ -2,15 +2,15 @@
   <Carousel :settings="settings" :breakpoints="breakpoints" :itemsToShow="itemsToShow">
     <Slide v-for="slide in slideData" :key="slide">
       <div class="carousel__item">
-        <div class="category cursor-pointer overflow-hidden rounded-3xl m-4 relative">
+        <div class="h-auto cursor-pointer overflow-hidden rounded-3xl m-4 relative">
           <template v-if="slide.imageName">
             <img
                 :src="require(`@/assets/${slide.imageName}`)"
                 alt="image"
-                class="w-full h-full rounded-3xl duration-700 hover:scale-110"
+                class="category_img rounded-3xl duration-700 hover:scale-110"
             >
           </template>
-          <div class="category_name uppercase absolute z-10 bottom-0 flex items-center justify-center text-white font-serif text-lg font-semibold">
+          <div class="category_name uppercase absolute z-10 bottom-0 flex items-center justify-center text-white font-serif text-sm lg:text-lg font-semibold">
             <template v-if="locale === 'en'">
               <p class="flex text-center content-center items-center justify-center m-auto">{{slide.name.en}}</p>
             </template>
@@ -69,7 +69,7 @@ export default {
           itemsToShow: 3.5,
           snapAlign: 'absolute',
         },
-        1024: {
+        762: {
           itemsToShow: this.itemsToShow,
           snapAlign: 'start',
         },
@@ -77,11 +77,7 @@ export default {
     }
   },
   methods: {
-    a(){
-      // for (let item of this.slideData){
-      //   // console.log(item.name)
-      // }
-    }
+    a(){}
   },
   mounted() {
     console.log(this.locale)
@@ -91,7 +87,7 @@ export default {
 </script>
 
 <style scoped>
-.category{
+.category_img{
   width: 13rem;
   height: 13rem;
 }
@@ -102,21 +98,18 @@ export default {
   height: 3.5rem;
 }
 @media screen and (max-width: 1350px){
-  .category{
-    width: 12rem;
-    height: 12rem;
+  .category_img{
+    height: 10rem;
   }
 }
-@media screen and (max-width: 1300px){
-  .category{
-    width: 11rem;
-    height: 11rem;
+@media screen and (max-width: 1100px){
+  .category_img{
+    height: 9rem;
   }
 }
-@media screen and (max-width: 1150px){
-  .category{
-    width: 9.5rem;
-    height: 9.5rem;
+@media screen and (max-width: 950px){
+  .category_img{
+    height: 6rem;
   }
 }
 </style>
