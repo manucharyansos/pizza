@@ -6,6 +6,7 @@
           :total-basket="basketTotal"
           @clickBasket="openBasket"
           @barsClick="bars"
+          :bool="isSearch"
           @searchFilter="openSearchContent"
       >
         <template v-slot:language>
@@ -17,10 +18,21 @@
         </template>
       </base-header>
     </div>
+
+    <!--    md search content-->
+
+    <template v-if="isSearchContent">
+      <div class="md:hidden z-50 flex flex-row items-start justify-start mr-auto text-left absolute top-0 left-0 w-full h-full py-6 px-6 bg-white">
+        <div class=" flex flex-row items-center justify-center">
+          <img src="@/assets/close.svg" alt="" class="w-10 h-10 border p-2 m-2 rounded-lg" @click="closeRes">
+          <base-input/>
+        </div>
+      </div>
+    </template>
     <template v-if="isOpenLanguage">
       <div class="w-full flex flex-row fixed h-full bars_div z-50 top-0">
         <div class="bars_div w-9/12" @click="isOpenLanguage = !isOpenLanguage"></div>
-        <div class="w-2/5  fixed z-30 top-0 right-0 h-full bg-white border border-l-silver-200 dark:border-51 dark:bg-mBlack">
+        <div class="w-2/5 xl:2/5 lg:w-1/4  fixed z-30 top-0 right-0 h-full bg-white border border-l-silver-200 dark:border-51 dark:bg-mBlack">
           <close-component
               @close="openLanguage"
               imgURL="close.svg"
@@ -114,6 +126,7 @@
       </div>
     </template>
 
+
     <!--  Top main-->
     <div class=" hidden md:flex flex-row px-12 mt-16 w-full">
       <div class="float-left">
@@ -189,6 +202,8 @@ export default {
       isOpenLanguage: false,
       language: 'HY',
       isOpenBasket: false,
+      isSearchContent: false,
+      isBool: false,
       footerAddress: [
         { id: 1, text: '1 Northern Ave, Երևան, Հայաստան', iconClass: 'fa-solid fa-location-dot'},
         { id: 2, text: 'MEGA MALL ARMENIA, Gai Avenue, Yerevan, Armenia', iconClass: 'fa-solid fa-location-dot'},
@@ -302,8 +317,13 @@ export default {
       }
     },
     openSearchContent(){
-      alert(123)
-    }
+      this.isSearchContent = true
+      this.isBool = true
+    },
+    closeRes(){
+      this.isSearchContent = false
+      this.isBool = false
+    },
   }
 }
 </script>
@@ -328,5 +348,9 @@ export default {
   width: 40px;
   height: 40px;
   padding: 10px;
+}
+.searchContent{
+  width: 100%;
+  height: 100vh;
 }
 </style>

@@ -15,7 +15,7 @@
             class="mr-2.5">
         <label
             :for="index"
-            class="font-serif text-xl text-silver cursor-pointer"
+            class="font-serif text-base md:text-xl text-silver cursor-pointer"
         >
           {{language.name}} - {{language.lang}}
         </label>

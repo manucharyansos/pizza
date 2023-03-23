@@ -5,14 +5,14 @@
       <div class="footer_img my-2">
         <img src="@/assets/home.svg" alt="" class="w-full">
       </div>
-      <p class="text-center mx-2 font-serif text-xl font-normal text-51">ԳԼԽԱՈՐ</p>
+      <p class="text-center mx-2 font-serif md:text-xl font-normal text-51">{{ $t('chief') }}</p>
     </div>
 <!--    about us-->
     <div class=" flex flex-col mx-auto items-center justify-center footer_about w-2/12">
       <div class="footer_img my-2">
         <img src="@/assets/aboutUs.svg" alt="" class="w-full">
       </div>
-      <p class="text-center mx-2 font-serif text-xl font-normal text-51">ՄԵՐ ՄԱՍԻՆ</p>
+      <p class="text-center mx-2 font-serif text-xl font-normal text-51">{{$t('about')}}</p>
     </div>
 <!--    delivery-->
     <div class=" flex flex-col items-center justify-center footer_delivery bg-mBlue rounded-full mx-auto w-2/12">
@@ -34,14 +34,14 @@
       <div class="footer_img my-2">
         <img src="@/assets/basket.svg" alt="" class="w-full">
       </div>
-      <p class="text-center mx-2 font-serif text-xl font-normal text-51">ԶԱՄԲՅՈՒՂ</p>
+      <p class="text-center mx-2 font-serif text-xl font-normal text-51">{{$t('basket')}}</p>
     </div>
 <!--    լօգին-->
     <div class=" flex flex-col mx-auto items-center justify-center footer_about w-2/12">
       <div class="footer_img my-2">
         <img src="@/assets/user.svg" alt="" class="w-full">
       </div>
-      <p class="text-center mx-2 font-serif text-xl font-normal text-51">ՄՈՒՏՔ ԳՈՐԾԵԼ</p>
+      <p class="text-center mx-2 font-serif text-xl font-normal text-51">{{$t('enter')}}</p>
     </div>
   </div>
 </template>
