@@ -200,7 +200,7 @@ export default {
       isBars: false,
       basketTotal: 0,
       isOpenLanguage: false,
-      language: 'HY',
+      language: 'EN',
       isOpenBasket: false,
       isSearchContent: false,
       isBool: false,
@@ -233,7 +233,6 @@ export default {
       this.basketTotal = this.getBasket.length
     },
     searchable(val){
-      console.log(val)
       if (val.length > 2){
         setTimeout(()=>{
           this.isSearch = true

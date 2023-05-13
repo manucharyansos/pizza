@@ -1,11 +1,6 @@
 <template>
   <div class="m-24 flex flex-row">
-    <select v-model="language" @change="dd">
-      <option value="en">En</option>
-      <option value="ru">Ru</option>
-      <option value="am">Am</option>
-    </select>
-    <p>{{$t('test')}}</p>
+
   </div>
 </template>
 
